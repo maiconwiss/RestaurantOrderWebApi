@@ -1,12 +1,12 @@
 ﻿using FluentValidation.Results;
 using RestaurantOrderWebApi.Domain.Dtos.Request;
 using RestaurantOrderWebApi.Domain.Dtos.Response;
-using RestaurantOrderWebApi.Domain.Interfaces;
 using RestaurantOrderWebApi.Domain.Interfaces.CrossCutting;
-using RestaurantOrderWebApi.Domain.Interfaces.Services;
-using RestaurantOrderWebApi.Domain.Interfaces.Services.Factories;
-using RestaurantOrderWebApi.Domain.Interfaces.Services.Mappers;
-using RestaurantOrderWebApi.Service.Services.Validators;
+using RestaurantOrderWebApi.Domain.Interfaces.Service.Factories;
+using RestaurantOrderWebApi.Domain.Interfaces.Service.Mappers;
+using RestaurantOrderWebApi.Domain.Interfaces.Service.Services;
+using RestaurantOrderWebApi.Domain.Interfaces.Service.Validators;
+using RestaurantOrderWebApi.Service.Validators;
 using System;
 
 namespace RestaurantOrderWebApi.Service.Services

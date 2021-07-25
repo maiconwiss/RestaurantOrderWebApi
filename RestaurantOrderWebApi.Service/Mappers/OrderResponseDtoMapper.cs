@@ -1,8 +1,8 @@
 ﻿using RestaurantOrderWebApi.Domain.Dtos.Response;
 using RestaurantOrderWebApi.Domain.Entities;
-using RestaurantOrderWebApi.Domain.Interfaces.Services.Mappers;
+using RestaurantOrderWebApi.Domain.Interfaces.Service.Mappers;
 
-namespace RestaurantOrderWebApi.Service.Services.Mappers
+namespace RestaurantOrderWebApi.Service.Mappers
 {
     public class OrderResponseDtoMapper : IOrderResponseDtoMapper
     {

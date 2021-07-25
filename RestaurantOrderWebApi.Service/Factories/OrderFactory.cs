@@ -1,9 +1,9 @@
 ﻿using RestaurantOrderWebApi.Domain.Entities;
 using RestaurantOrderWebApi.Domain.Interfaces.Data;
-using RestaurantOrderWebApi.Domain.Interfaces.Services.Factories;
+using RestaurantOrderWebApi.Domain.Interfaces.Service.Factories;
 using System.Collections.Generic;
 
-namespace RestaurantOrderWebApi.Service.Services.Factories
+namespace RestaurantOrderWebApi.Service.Factories
 {
     public class OrderFactory : IOrderFactory
     {

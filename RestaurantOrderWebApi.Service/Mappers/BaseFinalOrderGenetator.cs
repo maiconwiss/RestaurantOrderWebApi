@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RestaurantOrderWebApi.Service.Services.Mappers
+namespace RestaurantOrderWebApi.Service.Mappers
 {
     public abstract class BaseFinalOrderGenetator
     {

@@ -1,17 +1,17 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using RestaurantOrderWebApi.Domain.Interfaces;
 using RestaurantOrderWebApi.Domain.Interfaces.CrossCutting;
 using RestaurantOrderWebApi.Domain.Interfaces.Data;
-using RestaurantOrderWebApi.Domain.Interfaces.Services;
-using RestaurantOrderWebApi.Domain.Interfaces.Services.Factories;
-using RestaurantOrderWebApi.Domain.Interfaces.Services.Mappers;
+using RestaurantOrderWebApi.Domain.Interfaces.Service.Factories;
+using RestaurantOrderWebApi.Domain.Interfaces.Service.Mappers;
+using RestaurantOrderWebApi.Domain.Interfaces.Service.Services;
+using RestaurantOrderWebApi.Domain.Interfaces.Service.Validators;
 using RestaurantOrderWebApi.Infra.CrossCutting.Converters;
 using RestaurantOrderWebApi.Infra.CrossCutting.Logs;
 using RestaurantOrderWebApi.Infra.Data.Repository;
+using RestaurantOrderWebApi.Service.Factories;
+using RestaurantOrderWebApi.Service.Mappers;
 using RestaurantOrderWebApi.Service.Services;
-using RestaurantOrderWebApi.Service.Services.Factories;
-using RestaurantOrderWebApi.Service.Services.Mappers;
-using RestaurantOrderWebApi.Service.Services.Validators;
+using RestaurantOrderWebApi.Service.Validators;
 
 namespace RestaurantOrderWebApi.IoC
 {

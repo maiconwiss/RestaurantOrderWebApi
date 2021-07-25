@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RestaurantOrderWebApi.Service.Services.Mappers
+namespace RestaurantOrderWebApi.Service.Mappers
 {
-    public class MorningFinalOrderGenerator : BaseFinalOrderGenetator
+    public class NightFinalOrderGenerator : BaseFinalOrderGenetator
     {
-        public MorningFinalOrderGenerator(IEnumerable<Dish> dishes)
+        public NightFinalOrderGenerator(IEnumerable<Dish> dishes)
             : base(dishes)
         {
         }
-     
+
         public override string GenerateFinalOrder()
         {
             var listString = new List<string>();
@@ -21,11 +21,11 @@ namespace RestaurantOrderWebApi.Service.Services.Mappers
             {
                 var description = Dishes.Where(a => a.Id == item.Key).FirstOrDefault().Description;
 
-                if (item.Key != 3 && item.Value > 1)
+                if (item.Key != 2 && item.Value > 1)
                 {
                     listString.Add($"{description}, error");
                 }
-                else if (item.Key == 3 && item.Value > 1)
+                else if (item.Key == 2 && item.Value > 1)
                 {
                     listString.Add($"{description}(x{item.Value})");
                 }

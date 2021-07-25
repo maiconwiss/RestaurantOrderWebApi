@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using RestaurantOrderWebApi.Domain.Entities;
 
-namespace RestaurantOrderWebApi.Service.Services.Validators
+namespace RestaurantOrderWebApi.Service.Validators
 {
     public class OrderValidator : AbstractValidator<Order>
     {

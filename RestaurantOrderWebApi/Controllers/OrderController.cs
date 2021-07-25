@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RestaurantOrderWebApi.Domain.Dtos.Request;
 using RestaurantOrderWebApi.Domain.Dtos.Response;
-using RestaurantOrderWebApi.Domain.Interfaces.Services;
+using RestaurantOrderWebApi.Domain.Interfaces.Service.Services;
 
 namespace RestaurantOrderWebApi.Controllers
 {

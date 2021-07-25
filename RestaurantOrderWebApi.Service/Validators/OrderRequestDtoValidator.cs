@@ -1,10 +1,10 @@
 ﻿using RestaurantOrderWebApi.Domain.Entities;
-using RestaurantOrderWebApi.Domain.Interfaces;
 using RestaurantOrderWebApi.Domain.Interfaces.Data;
+using RestaurantOrderWebApi.Domain.Interfaces.Service.Validators;
 using System.Collections.Generic;
 
 
-namespace RestaurantOrderWebApi.Service.Services.Validators
+namespace RestaurantOrderWebApi.Service.Validators
 {
     public class OrderRequestDtoValidator : IOrderRequestDtoValidator
     {

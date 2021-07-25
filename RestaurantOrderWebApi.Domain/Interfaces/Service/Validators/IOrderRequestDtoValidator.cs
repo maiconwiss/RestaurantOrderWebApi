@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace RestaurantOrderWebApi.Domain.Interfaces
+namespace RestaurantOrderWebApi.Domain.Interfaces.Service.Validators
 {
     public interface IOrderRequestDtoValidator
     {
