@@ -31,7 +31,7 @@ namespace RestaurantOrderWebApi.Service.Services
 
         public string CreateOrder(OrderRequestDto orderRequestDto)
         {
-            string orderResponseDto = "";
+            string orderResponseDto = null;
 
             try
             {             
