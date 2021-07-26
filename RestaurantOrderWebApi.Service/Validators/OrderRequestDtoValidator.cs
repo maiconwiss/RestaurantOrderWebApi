@@ -15,13 +15,15 @@ namespace RestaurantOrderWebApi.Service.Validators
             this._dishRepository = _dishRepository;
         }
 
-        public string Validate(List<string> listStrings)
+        public string Validate(IList<string> listStrings)
         {
             var timeOfday = listStrings[0].ToUpper();
-            var resultTimeOfday = ValidateTimeOfDay(timeOfday);
-            if (resultTimeOfday != null)
+
+            var resultValidateTimeOfDay = ValidateTimeOfDay(timeOfday);
+
+            if (resultValidateTimeOfDay != null)
             {
-                return resultTimeOfday;
+                return resultValidateTimeOfDay;
             }
 
             var listDishes = GetAllDishes(listStrings);
@@ -29,7 +31,7 @@ namespace RestaurantOrderWebApi.Service.Validators
             return ValidateDishes(timeOfday, listDishes);
         }
 
-        private static List<string> GetAllDishes(List<string> listStrings)
+        private static IList<string> GetAllDishes(IList<string> listStrings)
         {
             var listDishes = new List<string>();
             var position = 1;
@@ -59,6 +61,10 @@ namespace RestaurantOrderWebApi.Service.Validators
 
         private string ValidateDishes(string timeOfday, IList<string> listDishes)
         {
+            if (listDishes.Count == 0)
+            {
+                return "Please enter with at least one Dish";
+            }
             if (timeOfday == "MORNING")
             {
                 return ValidateDishesOfMorning(listDishes);
@@ -71,7 +77,7 @@ namespace RestaurantOrderWebApi.Service.Validators
             return null;
         }
 
-        private string ValidateDishesOfNight(IList<string> listDishes)
+        private string ValidateDishesOfNight(IEnumerable<string> listDishes)
         {
             foreach (var item in listDishes)
             {
@@ -84,16 +90,16 @@ namespace RestaurantOrderWebApi.Service.Validators
 
                 if (dishDescription == null)
                 {
-                    var list = _dishRepository.GetDishesOfNight();
+                    var dishesOfNight = _dishRepository.GetDishesOfNight();
+                    var resultDishesOfNightToChoose = GetResultDishesOfNightToChoose(dishesOfNight);
 
-                    var stringResult = GetStringResultDishesOfNightToChoose(list);
-                    return stringResult;
+                    return resultDishesOfNightToChoose;
                 }
             }
             return null;
         }
 
-        private string ValidateDishesOfMorning(IList<string> listDishes)
+        private string ValidateDishesOfMorning(IEnumerable<string> listDishes)
         {
             foreach (var item in listDishes)
             {
@@ -106,37 +112,37 @@ namespace RestaurantOrderWebApi.Service.Validators
 
                 if (dishDescription == null)
                 {
-                    var list = _dishRepository.GetDishesOfMorning();
+                    var dishesOfMorning = _dishRepository.GetDishesOfMorning();
+                    var resultDishesOfMorningToChoose = GetResultDishesOfMorningToChoose(dishesOfMorning);
 
-                    var stringResult = GetStringResultDishesOfMorningToChoose(list);
-                    return stringResult;
+                    return resultDishesOfMorningToChoose;
                 }
             }
             return null;
         }
 
-        private static string GetStringResultDishesOfMorningToChoose(List<DishMorning> dishes)
+        private static string GetResultDishesOfMorningToChoose(IEnumerable<DishMorning> dishes)
         {
-            var stringResult = "Choose the following options on Morning: ";
+            var resultDishesOfMorningToChoose = "Choose the following options when select Morning: ";
 
             foreach (var item in dishes)
             {
-                stringResult += $"{item.Id}-{item.Description} ";
+                resultDishesOfMorningToChoose += $"{item.Id}-{item.Description} ";
             }
 
-            return stringResult;
+            return resultDishesOfMorningToChoose;
         }
 
-        private static string GetStringResultDishesOfNightToChoose(List<DishNight> dishes)
+        private static string GetResultDishesOfNightToChoose(IEnumerable<DishNight> dishes)
         {
-            var stringResult = "Choose the following options on Night: ";
+            var resultDishesOfNightToChoose = "Choose the following options when select Night: ";
 
             foreach (var item in dishes)
             {
-                stringResult += $"{item.Id}-{item.Description} ";
+                resultDishesOfNightToChoose += $"{item.Id}-{item.Description} ";
             }
 
-            return stringResult;
+            return resultDishesOfNightToChoose;
         }
     }
 }

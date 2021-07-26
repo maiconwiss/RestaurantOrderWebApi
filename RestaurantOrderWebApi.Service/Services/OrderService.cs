@@ -1,12 +1,9 @@
-﻿using FluentValidation.Results;
-using RestaurantOrderWebApi.Domain.Dtos.Request;
-using RestaurantOrderWebApi.Domain.Dtos.Response;
+﻿using RestaurantOrderWebApi.Domain.Dtos.Request;
 using RestaurantOrderWebApi.Domain.Interfaces.CrossCutting;
 using RestaurantOrderWebApi.Domain.Interfaces.Service.Factories;
 using RestaurantOrderWebApi.Domain.Interfaces.Service.Mappers;
 using RestaurantOrderWebApi.Domain.Interfaces.Service.Services;
 using RestaurantOrderWebApi.Domain.Interfaces.Service.Validators;
-using RestaurantOrderWebApi.Service.Validators;
 using System;
 
 namespace RestaurantOrderWebApi.Service.Services
@@ -32,44 +29,30 @@ namespace RestaurantOrderWebApi.Service.Services
             this._orderRequestDtoValidator = _orderRequestDtoValidator;
         }
 
-        public OrderResponseDto CreateOrder(OrderRequestDto orderRequestDto)
+        public string CreateOrder(OrderRequestDto orderRequestDto)
         {
-            OrderResponseDto orderResponseDto = new();
+            string orderResponseDto = "";
 
             try
             {             
                 var listStrings = _converterStrintToList.Converter(orderRequestDto.Input.Trim());
 
-                var resultValidation = _orderRequestDtoValidator.Validate(listStrings);
+                var resultOrderRequestDtoValidator = _orderRequestDtoValidator.Validate(listStrings);
 
-                if (resultValidation != null)
-                {
-                    orderResponseDto.Output = resultValidation;
-                    return orderResponseDto;
+                if (resultOrderRequestDtoValidator != null)
+                {                    
+                    return resultOrderRequestDtoValidator;
                 }
 
                 var order = _orderFactory.Create(listStrings);
 
-                OrderValidator validator = new();
-                ValidationResult results = validator.Validate(order);
-
-                if (!results.IsValid)
-                {
-                    foreach (var failure in results.Errors)
-                    {
-                        orderResponseDto.Output = "Property " + failure.PropertyName + " failed validation. Error was: " + failure.ErrorMessage;
-                    }
-                }
-                else
-                {
-                    orderResponseDto = _orderResponseDtoMapper.MapToDto(order);
-                }
+                orderResponseDto = _orderResponseDtoMapper.MapToDto(order);                
             }
             catch (Exception ex)
             {
                 _logException.CreateLog(ex);
             }
-    
+
             return orderResponseDto;
         }
     }

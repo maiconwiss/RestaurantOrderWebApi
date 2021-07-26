@@ -6,7 +6,7 @@ namespace RestaurantOrderWebApi.Infra.Data.Repository
 {
     public class DishRepository : IDishRepository
     {
-        //repository com dados mockados para simplificar a implementação
+        //repository com dados mockados
         public List<DishMorning> GetDishesOfMorning()
         {
             var dishMornings = new List<DishMorning>

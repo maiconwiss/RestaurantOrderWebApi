@@ -6,9 +6,9 @@ namespace RestaurantOrderWebApi.Infra.CrossCutting.Converters
 {
     public class ConverterStrintToList : IConverterStrintToList
     {
-        public List<string> Converter(string value)
+        public IList<string> Converter(string value)
         {
-            List<string> list = value.Split(',').Select(a => a).ToList();
+            IList<string> list = value.Split(',').Select(a => a).ToList();
             return list;
         }
     }

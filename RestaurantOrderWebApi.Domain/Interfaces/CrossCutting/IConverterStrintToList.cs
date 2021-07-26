@@ -4,6 +4,6 @@ namespace RestaurantOrderWebApi.Domain.Interfaces.CrossCutting
 {
     public interface IConverterStrintToList
     {
-        List<string> Converter(string value);
+        IList<string> Converter(string value);
     }
 }

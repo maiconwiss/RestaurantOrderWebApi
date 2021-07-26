@@ -1,4 +1,3 @@
-using System;
 using Xunit;
 
 namespace RestaurantOrderWebApi.Service.Test
@@ -8,6 +7,11 @@ namespace RestaurantOrderWebApi.Service.Test
         [Fact]
         public void Create_New_Order_Morning_Successfully()
         {
+            // Arrange
+
+            // Act
+
+            // Assert
 
         }
 

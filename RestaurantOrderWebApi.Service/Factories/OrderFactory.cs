@@ -50,7 +50,7 @@ namespace RestaurantOrderWebApi.Service.Factories
             return listDishIds;
         }
 
-        private static List<int> GetDishesOrdenedAscendent(List<int> dishesIds)
+        private static IEnumerable<int> GetDishesOrdenedAscendent(List<int> dishesIds)
         {
             List<int> dishesOrdenedAscendent = dishesIds;
             dishesOrdenedAscendent.Sort();
@@ -58,7 +58,7 @@ namespace RestaurantOrderWebApi.Service.Factories
             return dishesOrdenedAscendent;
         }
 
-        private List<Dish> GetDishesMorningFinal(List<int> dishesIds)
+        private IEnumerable<Dish> GetDishesMorningFinal(IEnumerable<int> dishesIds)
         {
             var dishes = new List<Dish>();
 
@@ -75,7 +75,7 @@ namespace RestaurantOrderWebApi.Service.Factories
             return dishes;
         }
 
-        private List<Dish> GetDishesNigthFinal(List<int> dishesIds)
+        private IEnumerable<Dish> GetDishesNigthFinal(IEnumerable<int> dishesIds)
         {
             var dishes = new List<Dish>();
 
@@ -92,7 +92,7 @@ namespace RestaurantOrderWebApi.Service.Factories
             return dishes;
         }
 
-        private List<Dish> GetDishes(List<int> dishesIds, string timeOfDay)
+        private IEnumerable<Dish> GetDishes(IEnumerable<int> dishesIds, string timeOfDay)
         {
             return timeOfDay.ToUpper() switch
             {

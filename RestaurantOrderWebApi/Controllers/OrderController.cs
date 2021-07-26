@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RestaurantOrderWebApi.Domain.Dtos.Request;
-using RestaurantOrderWebApi.Domain.Dtos.Response;
 using RestaurantOrderWebApi.Domain.Interfaces.Service.Services;
 
 namespace RestaurantOrderWebApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class OrderController : ControllerBase
     {
         private readonly IOrderService _orderService;
@@ -17,7 +16,7 @@ namespace RestaurantOrderWebApi.Controllers
         }
 
         [HttpPost]
-        public OrderResponseDto CreatOrder(OrderRequestDto orderRequestDto)
+        public string CreatOrder(OrderRequestDto orderRequestDto)
         {
             var orderResponseDto = _orderService.CreateOrder(orderRequestDto);
 
